@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started in 3 Easy Steps</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+  }
+
+  body {
+    background-color: #101010;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .container {
+    background-color: #f8f9fc;
+    padding: 50px;
+    border-radius: 8px;
+    max-width: 900px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #2b2b2b;
+  }
+
+  .highlight {
+    color: #2ed4a4;
+    background-color: #e2f9ed;
+    padding: 0 5px;
+    border-radius: 5px;
+  }
+
+  .steps {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .step {
+    flex: 1;
+    padding: 20px;
+  }
+
+  .step-number {
+    font-size: 1.5rem;
+    background-color: #e2f9ed;
+    color: #2ed4a4;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    color: #2b2b2b;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #7a7a7a;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+</style>
+
+<body>
+  <div id="root"></div>
+
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    function Heading() {
+      return (
+        <h1>Getting started in <span className="highlight">3 easy steps</span></h1>
+      );
+    }
+
+    function Card({ step, title, content }) {
+      return (
+        <div className="step">
+          <div className="step-number">{step}</div>
+          <h2>{title}</h2>
+          <p>{content}</p>
+        </div>
+      );
+    }
+
+    function App() {
+      const options = [
+        {
+          step: "01",
+          title: "Find your template",
+          content: "Every template is embedded within an iframe, so you can easily check what they look like and test the responsive behavior."
+        },
+        {
+          step: "02",
+          title: "Copy the code",
+          content: "Click the code tab to see the actual source code of the template. Copy and paste it into your project and adjust it to your needs."
+        },
+        {
+          step: "03",
+          title: "Enjoy your free time",
+          content: "You've just saved yourself a bunch of time not building the same stuff over and over again. Enjoy your free time, and build business features."
+        }
+      ];
+
+      return (
+        <div className="container">
+          <Heading />
+          <div className="steps">
+            {options.map((option, index) => (
+              <Card
+                key={index}
+                step={option.step}
+                title={option.title}
+                content={option.content}
+              />
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+
+</html>
